@@ -100,8 +100,9 @@
             Tim
             -->
             <h2>The Rebirth of Cool</h2>
-            <h1>OpenLayers</h1>
+            <h1>OpenLayers<br>Past, Present, Future</h1>
             <ul class="authors">
+                <li>Andreas Hocevar <span class="subtle">(OpenGeo)</span></li>
                 <li>Tim Schaub <span class="subtle">(OpenGeo)</span></li>
                 <li>Eric Lemoine <span class="subtle">(Camptocamp)</span></li>
             </ul>
@@ -112,6 +113,51 @@
             Tim
             -->
             <h1>What's new?<br><em class="subtle">(and some old stuff you should know about too)</em></h1>
+        </section>
+        
+        <section class="slide" id="in-the-beginning">
+            <!--
+            Andreas
+            -->
+            <h2>In the beginning...</h2>
+            <img src="img/beginning.jpg" style="height: 75%;" alt="The Big Bang">
+            <div class="caption">MetaCarta Headquarters, Cambridge, MA, 2005</div>
+        </section>
+        
+        <section class="slide" id="openlayers-1-0">
+            <!--
+            Andreas
+            -->
+            <h2>OpenLayers 1.0</h2>
+            <img src="img/hacker.jpg" style="height: 75%;" alt="Ninja Hacker">
+            <div class="caption">Mission: reverse engineer Google Maps</div>
+        </section>
+        
+        <section class="slide" id="openlayers-2-0">
+            <!--
+            Andreas
+            -->
+            <h2>OpenLayers 2.0</h2>
+            <img src="img/ol20.png" style="height: 75%;" alt="OpenLayers 2.0 Map"></div>
+            <div class="caption">OpenSource Geospatial Land, August 2006</div>
+        </section>
+        
+        <section class="slide" id="past">
+            <!--
+            Andreas
+            -->
+            <h2>The Past</h2>
+            <iframe src="http://player.vimeo.com/video/7126247" style="height: 75%; width: 75%;" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+            <div class="caption">http://vimeo.com/7126247</div>
+        </section>
+        
+        <section class="slide" id="present">
+            <!--
+            Andreas
+            -->
+            <h2>The Present</h2>
+            <img src="img/sprinters.jpg" style="height: 75%;" alt="OpenLayers Mobile Sprinters"></div>
+            <div class="caption">OpenLayers Mobile Sprint, Lausanne, 2011</div>
         </section>
         
         <section class="slide" id="github-move">
@@ -296,6 +342,7 @@ map.setCenter(new OpenLayers.LonLat(0, 0), 1);
             <img src="img/fast-cat.jpg" style="width: 55%; float: right; margin-left: 1em;" alt="performance">
             <h3>Performance optimizations</h3>
             <ul>
+            <li>Faster panning by using pixel coordinate space directly</li>
             <li>Use <code>requestAnimationFrame</code> for animations (when available)</li>
             <!-- Speaker notes:
                  requestAnimationFrame allows for
@@ -353,7 +400,7 @@ map.setCenter(new OpenLayers.LonLat(0, 0), 1);
 <script src="externals/openlayers/lib/OpenLayers.js"></script>
 <script src="externals/jquery-ui-1.8.18.custom/js/jquery-ui-1.8.18.custom.min.js"></script>
 <script>
-    OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {});
+    //OpenLayers.Control.CacheWrite = OpenLayers.Class(OpenLayers.Control, {});
     $(function() {
         // listen for slide changes and run custom to/from listeners
         $(document).bind("deck.change", function(event, from, to) {
@@ -374,7 +421,7 @@ map.setCenter(new OpenLayers.LonLat(0, 0), 1);
             
         });
         
-        var contribTimer, fadeMap, offlineMap, utfgridMap;
+        var contribTimer, ol20Map, fadeMap, offlineMap, utfgridMap;
 
         // custom functions to be run when changing to/from specific slides
         var listeners = {
@@ -411,7 +458,7 @@ map.setCenter(new OpenLayers.LonLat(0, 0), 1);
             // add map to tile transition slide
             fade: {
                 to: function() {
-                    OpenLayers.ProxyHost = "/proxy/?url=";
+                    OpenLayers.ProxyHost = "../proxy.cgi/?url=";
                     $("#fade-map").attr("tabindex", "0")
                     var height = Math.round(0.65 * $("#fade-map").parent().height());
                     $("#fade-map").height(height);
@@ -511,7 +558,7 @@ map.setCenter(new OpenLayers.LonLat(0, 0), 1);
             // add map to tile transition slide
             utfgrid: {
                 to: function() {
-                    OpenLayers.ProxyHost = "/proxy/?url=";
+                    OpenLayers.ProxyHost = "../proxy.cgi/?url=";
                     
                     $("#utfgrid-map").attr("tabindex", "0")
                     var height = Math.round(0.65 * $("#utfgrid-map").parent().height());
@@ -591,7 +638,7 @@ map.setCenter(new OpenLayers.LonLat(0, 0), 1);
             // add map to client zoom slide
             clientzoom: {
                 to: function() {
-                    OpenLayers.ProxyHost = "/proxy/?url=";
+                    OpenLayers.ProxyHost = "../proxy.cgi/?url=";
                     $("#clientzoom-map").attr("tabindex", "0")
                     var height = Math.round(0.65 * $("#clientzoom-map").parent().height());
                     $("#clientzoom-map").height(height);
